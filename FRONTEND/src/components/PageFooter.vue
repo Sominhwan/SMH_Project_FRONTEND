@@ -1,5 +1,5 @@
 <template>
-  <v-footer dark padless absolute color="#2f3238">
+  <v-footer dark padless color="#2f3238">
       <v-card-text class="text-right mx-5">
         <v-btn v-for="icon in icons" :key="icon" class="mx-4 white--text" icon>
           <v-icon size="24px">

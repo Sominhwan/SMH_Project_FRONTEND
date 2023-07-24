@@ -5,15 +5,14 @@
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="drawer-icon"></v-app-bar-nav-icon>
             <v-toolbar-title class="menu-text pa-1">메뉴</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-toolbar-title class="nav-content pa-5">메뉴</v-toolbar-title>  
-            <v-toolbar-title class="nav-content pa-5">메뉴</v-toolbar-title>  
-            <v-toolbar-title class="nav-content pa-5">메뉴</v-toolbar-title>  
-            <v-toolbar-title class="nav-menu pa-5">
-                메뉴   
-            </v-toolbar-title>  
-            
-            <v-card class="menu-container" flat>
-                <v-list-item>
+            <v-toolbar-title class="nav-menu pa-5" @mouseover="menu = true" @mouseleave="menu = false">메뉴</v-toolbar-title>
+            <v-toolbar-title class="nav-menu2 pa-5" @mouseover="menu = true" @mouseleave="menu = false">메뉴</v-toolbar-title>  
+            <v-toolbar-title class="nav-menu3 pa-5">메뉴</v-toolbar-title>  
+            <v-toolbar-title class="nav-menu4 pa-5">메뉴</v-toolbar-title>  
+              
+            <div v-if="menu" class="menu-container rounded-0" flat @mouseover="menuBackground()">
+                
+                <!-- <v-list-item>
                 <v-list-item-content>
                     <v-list-item-title>Single-line item</v-list-item-title>
                 </v-list-item-content>
@@ -36,8 +35,8 @@
                     consectetur adipiscing elit.
                     </v-list-item-subtitle>
                 </v-list-item-content>
-                </v-list-item>
-            </v-card>
+                </v-list-item> -->
+            </div> 
  
 
             <v-spacer></v-spacer>
@@ -79,7 +78,7 @@
                 </div>
             </template>
         </v-navigation-drawer>
-        <!-- <v-top-sheet hide-overlay></v-top-sheet> -->
+        <!-- <v-top-sheet hide-overlay></v-top-sheet> -->  
     </div>
 </template>
 <script>
@@ -88,9 +87,13 @@ export default {
       drawer: false,
       group: null,
       sheet: false,
+      menu: false,
      
     }),
     methods: {
+        menuBackground() {
+            this.menu = true
+        }
 
     },
     watch: {
@@ -117,26 +120,28 @@ export default {
         border: 1px solid #eee;
     }
     .menu-container {
+ 
         position: absolute;
         top: 65px;
         left: 0px;
         height: 500px;
         width: 100%;
         background-color: #eee;
-        visibility:hidden;
-        opacity: 0;
-        transition: opacity 0.7s ease; /* 페이드 인 효과를 위한 트랜지션 설정 */
+
+        /* opacity: 0;*/
+        transition: opacity 0.7s ease;  
     }
-    .menu-container:hover{
+    /* .menu-container:hover{
         opacity: 1;
-        visibility: visible;
+        display: block;
     }
     .nav-menu:hover {
         cursor: pointer;
         color: #1877F2;    
-    }     
-    .nav-menu:hover + .menu-container{     
-        opacity: 1;     
-        visibility: visible;
+    }      */
+    .nav-menu:hover .menu-container{     
+        /* opacity: 1;      */
+        /* visibility: visible; */
     }
+
 </style>
